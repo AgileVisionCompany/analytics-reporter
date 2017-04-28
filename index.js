@@ -75,9 +75,9 @@ var run = function(options) {
 
         // JSON
         else {
+          console.log(data);
           // some reports can be slimmed down for direct rendering
           if (options.slim && report.slim) delete data.data;
-
           writeReport(name, JSON.stringify(data, null, 2), ".json", done);
         }
     });
