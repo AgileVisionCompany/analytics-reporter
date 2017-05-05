@@ -26,6 +26,8 @@ const processGoogleAnalyticsData = (report, data) => {
     return _processRow({ row, report, data })
   })
 
+  console.log(data, '-----');
+
   result.totals = calculateTotals(result)
 
   return result;

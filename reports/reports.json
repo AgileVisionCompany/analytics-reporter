@@ -412,10 +412,6 @@
       "name": "all-pages-realtime",
       "frequency": "realtime",
       "realtime": true,
-      "threshold": {
-        "field": "rt:activeUsers",
-        "value": "10"
-      },
       "query": {
         "dimensions": ["rt:pagePath", "rt:pageTitle"],
         "metrics": ["rt:activeUsers"],
@@ -425,6 +421,23 @@
       "meta": {
         "name": "All Pages (Live)",
         "description": "Pages, measured by active onsite users, for all sites."
+      }
+    },    
+    {
+      "name": "all-domains-30-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:hostname"],
+        "metrics": ["ga:sessions", "ga:pageviews", "ga:users", "ga:pageviewsPerSession", "ga:avgSessionDuration", "ga:exits"],
+        "start-date": "30daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:sessions",
+        "max-results": "10000",
+        "filters": ["ga:sessions>=1000"]
+      },
+      "meta": {
+        "name": "All Domains (30 Days)",
+        "description": "Last 30 days' domains, measured by visits, for all sites."
       }
     },    
     {
